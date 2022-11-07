@@ -1,0 +1,864 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-Hans">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/uploads/favicon.ico?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/uploads/favicon.ico?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="后端," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Blueprint Blog" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="因为刚学习php，所以对php并熟悉，很多地方其实可以优化或者可以把所有接口封装成一个接口调用，这个项目本意是学习通过php写增删改查接口，实现功能，前端页面只简单写了布局，所以请原谅前端页面只能将就的显示数据而已，文章底部附项目的下载地址。进入正题吧 1、创建本地服务器存放项目本地服务器是我通过PHPstudy集成环境创建的。 2、创建项目的数据库数据库是我通过Navicat Premium 1">
+<meta name="keywords" content="后端">
+<meta property="og:type" content="article">
+<meta property="og:title" content="文章列表项目（php增删查改功能接口）">
+<meta property="og:url" content="http:&#x2F;&#x2F;yoursite.com&#x2F;2019&#x2F;11&#x2F;14&#x2F;%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E9%A1%B9%E7%9B%AE%EF%BC%88php%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%8F%A3%EF%BC%89&#x2F;index.html">
+<meta property="og:site_name" content="Blueprint Blog">
+<meta property="og:description" content="因为刚学习php，所以对php并熟悉，很多地方其实可以优化或者可以把所有接口封装成一个接口调用，这个项目本意是学习通过php写增删改查接口，实现功能，前端页面只简单写了布局，所以请原谅前端页面只能将就的显示数据而已，文章底部附项目的下载地址。进入正题吧 1、创建本地服务器存放项目本地服务器是我通过PHPstudy集成环境创建的。 2、创建项目的数据库数据库是我通过Navicat Premium 1">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111195025118.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111200049948.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111204753333.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111204824763.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111204900454.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111204926690.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111204950694.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111205002946.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+<meta property="og:updated_time" content="2019-11-14T12:06:42.196Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https:&#x2F;&#x2F;img-blog.csdnimg.cn&#x2F;20191111195025118.png?x-oss-process=image&#x2F;watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/11/14/文章列表项目（php增删查改功能接口）/"/>
+
+
+
+
+
+
+
+ <script>(function(i,s,o,g,r,a,m){i["DaoVoiceObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;a.charset="utf-8";m.parentNode.insertBefore(a,m)})(window,document,"script",('https:' == document.location.protocol ? 'https:' : 'http:') + "//widget.daovoice.io/widget/b6dbddb6.js","daovoice")
+ daovoice('init', {
+  app_id: "908bcda4"
+});
+daovoice('update');
+ </script>
+
+
+  <title>文章列表项目（php增删查改功能接口） | Blueprint Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?8a599c341936c8be4791ddab17f4a2e5";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Blueprint Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            标签
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            分类
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/11/14/%E6%96%87%E7%AB%A0%E5%88%97%E8%A1%A8%E9%A1%B9%E7%9B%AE%EF%BC%88php%E5%A2%9E%E5%88%A0%E6%9F%A5%E6%94%B9%E5%8A%9F%E8%83%BD%E6%8E%A5%E5%8F%A3%EF%BC%89/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="蓝图">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/uploads/picture.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Blueprint Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">文章列表项目（php增删查改功能接口）</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-11-14T20:05:32+08:00">
+                2019-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">分类于</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index">
+                    <span itemprop="name">技术</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>因为刚学习php，所以对php并熟悉，很多地方其实可以优化或者可以把所有接口封装成一个接口调用，这个项目本意是学习通过php写增删改查接口，实现功能，前端页面只简单写了布局，所以请原谅前端页面只能将就的显示数据而已，文章底部附项目的下载地址。进入正题吧</p>
+<h2 id="1、创建本地服务器存放项目"><a href="#1、创建本地服务器存放项目" class="headerlink" title="1、创建本地服务器存放项目"></a>1、创建本地服务器存放项目</h2><p>本地服务器是我通过PHPstudy集成环境创建的。<br><img src="https://img-blog.csdnimg.cn/20191111195025118.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="2、创建项目的数据库"><a href="#2、创建项目的数据库" class="headerlink" title="2、创建项目的数据库"></a>2、创建项目的数据库</h2><p>数据库是我通过Navicat Premium 12快速创建的，数据库命名为articles,然后再创建一张表article。需要添加6个字段，分别是id（id作为主键需要自增长），title，auther，description，content，dateline保存各项数据<br><img src="https://img-blog.csdnimg.cn/20191111200049948.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="3、连接数据库创建增删查改4个接口"><a href="#3、连接数据库创建增删查改4个接口" class="headerlink" title="3、连接数据库创建增删查改4个接口"></a>3、连接数据库创建增删查改4个接口</h2><ol>
+<li>创建config.php文件，配置数据库信息</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">	$servername = <span class="string">"localhost"</span>;</span><br><span class="line">	$username = <span class="string">"root"</span>;</span><br><span class="line">	$password = <span class="string">"123456"</span>;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>创建connnect.php文件，用于连接数据库</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">'config.php'</span>);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$dbname = <span class="string">"articles"</span>;</span><br><span class="line"><span class="comment">//连接数据库</span></span><br><span class="line">$con = <span class="keyword">new</span> mysqli($servername, $username, $password, $dbname);</span><br><span class="line"><span class="keyword">if</span>($con-&gt;connect_error)&#123;</span><br><span class="line">	<span class="keyword">die</span>(<span class="string">'连接失败'</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.接下来分别写增删改查4个接口，创建articleList.php文件，用于获取文章列表数据</p>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//连接数据库</span></span><br><span class="line">$action = $_GET[<span class="string">'action'</span>];</span><br><span class="line"><span class="keyword">if</span>($action == <span class="string">'getList'</span>)&#123;</span><br><span class="line"><span class="keyword">require_once</span>(<span class="string">'connect.php'</span>);</span><br><span class="line"></span><br><span class="line">$getInfoSql = <span class="string">"SELECT * FROM  article order by id ASC"</span>;</span><br><span class="line">$result = $con-&gt;query($getInfoSql);</span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>($result-&gt;num_rows &gt; <span class="number">0</span>)&#123;</span><br><span class="line">	<span class="keyword">while</span>($row = $result-&gt;fetch_assoc()) &#123;</span><br><span class="line">		$data[] = $row;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    $json = json_encode(<span class="keyword">array</span>(</span><br><span class="line">            <span class="string">"resultCode"</span>=&gt;<span class="number">200</span>,</span><br><span class="line">            <span class="string">"message"</span>=&gt;<span class="string">"查询成功！"</span>,</span><br><span class="line">            <span class="string">"data"</span>=&gt;$data</span><br><span class="line">        ),JSON_UNESCAPED_UNICODE);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//转换成字符串JSON</span></span><br><span class="line">        <span class="keyword">echo</span>($json);</span><br><span class="line">&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">     $json = json_encode(<span class="keyword">array</span>(</span><br><span class="line">            <span class="string">"resultCode"</span>=&gt;<span class="number">200</span>,</span><br><span class="line">            <span class="string">"message"</span>=&gt;<span class="string">"暂无数据"</span>,</span><br><span class="line">            <span class="string">"data"</span>=&gt;<span class="string">''</span></span><br><span class="line">        ),JSON_UNESCAPED_UNICODE);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//转换成字符串JSON</span></span><br><span class="line">        <span class="keyword">echo</span>($json);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>创建addArticle.php，增加文章的时候调取该接口</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">$action = $_POST[<span class="string">'action'</span>];</span><br><span class="line"><span class="keyword">if</span>($action == <span class="string">'add'</span>)&#123;</span><br><span class="line">	<span class="comment">//连接数据库</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'connect.php'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// //获取前端的数据</span></span><br><span class="line">	$title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">	$auther = $_POST[<span class="string">'authod'</span>];</span><br><span class="line">	$description = $_POST[<span class="string">'description'</span>];</span><br><span class="line">	$content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">	<span class="comment">//获取当前的时间</span></span><br><span class="line">	$dateTime = date(<span class="string">'Y-m-d h:i:s'</span>,time());</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="comment">// 把数据写入数据库</span></span><br><span class="line">	$addSql = <span class="string">"INSERT  INTO  article(title,auther,description,content,dateline) VALUES  ('$title','$auther','$description','$content','$dateTime')"</span>;</span><br><span class="line">	<span class="keyword">if</span> ($con-&gt;query($addSql) === <span class="keyword">TRUE</span>) &#123;</span><br><span class="line">	     $json = json_encode(<span class="keyword">array</span>(</span><br><span class="line">            <span class="string">"resultCode"</span>=&gt;<span class="number">200</span>,</span><br><span class="line">            <span class="string">"message"</span>=&gt;<span class="string">"添加成功！"</span>,</span><br><span class="line">            <span class="string">"data"</span>=&gt;[]</span><br><span class="line">        ),JSON_UNESCAPED_UNICODE);</span><br><span class="line">        <span class="keyword">echo</span>  $json;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">"Error: "</span> . $addSql . <span class="string">"&lt;br&gt;"</span> . mysqli_error($con);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+
+<ol start="5">
+<li>创建fix.php，用来修改文章时候调取</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line"></span><br><span class="line">$action = $_POST[<span class="string">'action'</span>];</span><br><span class="line"><span class="keyword">if</span>($action == <span class="string">'fixInfo'</span>)&#123;</span><br><span class="line">	<span class="comment">//连接数据库</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'connect.php'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// //获取前端的数据</span></span><br><span class="line">	$itemID = $_POST[<span class="string">'id'</span>];</span><br><span class="line">	$title = $_POST[<span class="string">'title'</span>];</span><br><span class="line">	$authod = $_POST[<span class="string">'authod'</span>];</span><br><span class="line">	$description = $_POST[<span class="string">'description'</span>];</span><br><span class="line">	$content = $_POST[<span class="string">'content'</span>];</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	$update = <span class="string">"UPDATE article SET title='$title',auther='$authod',description='$description',content='$content' WHERE id=$itemID "</span>;</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	$result = $con-&gt;query($update);</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ($con-&gt;query($update) === <span class="keyword">TRUE</span>) &#123;</span><br><span class="line">     </span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">"Error: "</span> . $update . <span class="string">"&lt;br&gt;"</span> . mysqli_error($con);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	$json = json_encode(<span class="keyword">array</span>(</span><br><span class="line">            <span class="string">"resultCode"</span>=&gt;<span class="number">200</span>,</span><br><span class="line">            <span class="string">"message"</span>=&gt;<span class="string">"更新成功！"</span>,</span><br><span class="line">            <span class="string">"data"</span>=&gt;[]</span><br><span class="line">        ),JSON_UNESCAPED_UNICODE);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//转换成字符串JSON</span></span><br><span class="line">        <span class="keyword">echo</span>($json);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="6">
+<li>创建delete.php，删除文章接口</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$action = $_POST[<span class="string">'action'</span>];</span><br><span class="line"><span class="keyword">if</span>($action == <span class="string">'deleteItem'</span>)&#123;</span><br><span class="line">	<span class="comment">//连接数据库</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'connect.php'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// //获取前端的数据</span></span><br><span class="line">	$itemID = $_POST[<span class="string">'id'</span>];</span><br><span class="line"></span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 把数据写入数据库</span></span><br><span class="line">	$deleteSql = <span class="string">"DELETE FROM article WHERE id = $itemID"</span>;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span> ($con-&gt;query($deleteSql) === <span class="keyword">TRUE</span>) &#123;</span><br><span class="line">	     $json = json_encode(<span class="keyword">array</span>(</span><br><span class="line">            <span class="string">"resultCode"</span>=&gt;<span class="number">200</span>,</span><br><span class="line">            <span class="string">"message"</span>=&gt;<span class="string">"删除成功！"</span>,</span><br><span class="line">            <span class="string">"data"</span>=&gt;[]</span><br><span class="line">        ),JSON_UNESCAPED_UNICODE);</span><br><span class="line">        <span class="keyword">echo</span>  $json;</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">	    <span class="keyword">echo</span> <span class="string">"Error: "</span> . $deleteSql . <span class="string">"&lt;br&gt;"</span> . mysqli_error($con);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+<ol start="7">
+<li>创建check.php，查看文章接口</li>
+</ol>
+<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?php</span></span><br><span class="line">$action = $_POST[<span class="string">'action'</span>];</span><br><span class="line"><span class="keyword">if</span>($action == <span class="string">'check'</span>)&#123;</span><br><span class="line">	<span class="comment">//连接数据库</span></span><br><span class="line">	<span class="keyword">require_once</span>(<span class="string">'connect.php'</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// //获取前端的数据</span></span><br><span class="line">	$itemID = $_POST[<span class="string">'id'</span>];</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	</span><br><span class="line">	<span class="comment">// 把数据写入数据库</span></span><br><span class="line">	$checkSql = <span class="string">"SELECT * FROM article WHERE id=$itemID"</span>;</span><br><span class="line"></span><br><span class="line">	$result = $con-&gt;query($checkSql);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// print_r($result);</span></span><br><span class="line"></span><br><span class="line">	<span class="keyword">if</span>($result-&gt;num_rows)&#123;</span><br><span class="line">		$data[] = $result-&gt;fetch_assoc();</span><br><span class="line">	&#125;;</span><br><span class="line">	</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">	$json = json_encode(<span class="keyword">array</span>(</span><br><span class="line">            <span class="string">"resultCode"</span>=&gt;<span class="number">200</span>,</span><br><span class="line">            <span class="string">"message"</span>=&gt;<span class="string">"查询成功！"</span>,</span><br><span class="line">            <span class="string">"data"</span>=&gt;$data</span><br><span class="line">        ),JSON_UNESCAPED_UNICODE);</span><br><span class="line">        </span><br><span class="line">        <span class="comment">//转换成字符串JSON</span></span><br><span class="line">        <span class="keyword">echo</span>($json);</span><br><span class="line">    &#125;</span><br><span class="line"><span class="meta">?&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4、创建前端页面，分别是列表页面，增加文章页面，查看文章页面，修改文章页面"><a href="#4、创建前端页面，分别是列表页面，增加文章页面，查看文章页面，修改文章页面" class="headerlink" title="4、创建前端页面，分别是列表页面，增加文章页面，查看文章页面，修改文章页面"></a>4、创建前端页面，分别是列表页面，增加文章页面，查看文章页面，修改文章页面</h2><ol>
+<li>创建前端列表页面，引入jq，使用ajax调取接口数据显示在前端页面，一进入页面就直接调取文章列表接口获取文章列表信息</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;文章列表&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;script src=<span class="string">"js/jquery-1.12.4.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;button id=<span class="string">'addBtn'</span> style=<span class="string">'width: 80px;height: 30px;margin: 10px'</span> &gt;增加文章&lt;/button&gt;</span><br><span class="line">		&lt;table id=<span class="string">"tableBox"</span> border=<span class="string">'1'</span>  width=<span class="string">"800"</span>&gt;</span><br><span class="line">		&lt;/table&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			getList();</span><br><span class="line">			<span class="keyword">function</span> <span class="function"><span class="title">getList</span></span>()&#123;</span><br><span class="line">					$.ajax(&#123;</span><br><span class="line">					<span class="built_in">type</span>: <span class="string">"get"</span>,</span><br><span class="line">					url:<span class="string">'articleList.php'</span>,</span><br><span class="line">					data:&#123;</span><br><span class="line">						action:<span class="string">'getList'</span></span><br><span class="line">					&#125;,</span><br><span class="line">					dataType:<span class="string">'JSON'</span>,</span><br><span class="line">					success:(data)=&gt;&#123;</span><br><span class="line">						<span class="built_in">let</span> tableInfo = data.data;</span><br><span class="line">						$(<span class="string">'#tableBox'</span>).html(<span class="string">''</span>);</span><br><span class="line">						$(<span class="string">'#tableBox'</span>).html(<span class="string">'&lt;tr&gt;&lt;th&gt;id&lt;/td&gt;&lt;th&gt;标题&lt;/td&gt;&lt;th&gt;作者&lt;/td&gt;&lt;th&gt;描述&lt;/td&gt;&lt;th&gt;内容&lt;/td&gt;&lt;th&gt;时间&lt;/td&gt;&lt;th&gt;操作&lt;/td&gt;&lt;/tr&gt;'</span>);</span><br><span class="line">						tableInfo.forEach((item,index)=&gt;&#123;</span><br><span class="line">							<span class="built_in">let</span> info = `&lt;tr&gt;&lt;td&gt;<span class="variable">$&#123;item.id&#125;</span>&lt;/td&gt;&lt;td&gt;<span class="variable">$&#123;item.title&#125;</span>&lt;/td&gt;&lt;td&gt;<span class="variable">$&#123;item.auther&#125;</span>&lt;/td&gt;&lt;td&gt;<span class="variable">$&#123;item.description&#125;</span>&lt;/td&gt;&lt;td&gt;<span class="variable">$&#123;item.content&#125;</span>&lt;/td&gt;&lt;td&gt;<span class="variable">$&#123;item.dateline&#125;</span>&lt;/td&gt;&lt;td&gt;&lt;button id=<span class="string">'checkBtn'</span>  myIndex=<span class="string">'$&#123;index&#125;'</span>&gt;查看&lt;/button&gt;  &lt;button  id=<span class="string">'delete'</span> myIndex=<span class="string">'$&#123;index&#125;'</span>&gt;删除&lt;/button&gt;  &lt;button id=<span class="string">"fixBtn"</span>  myIndex=<span class="string">'$&#123;index&#125;'</span>&gt;修改&lt;/button&gt; &lt;/td&gt;&lt;/tr&gt;`</span><br><span class="line">							$(<span class="string">'#tableBox'</span>).append(info);</span><br><span class="line"></span><br><span class="line">						&#125;)</span><br><span class="line">					&#125;,</span><br><span class="line">					error:(e)=&gt;&#123;</span><br><span class="line">						console.log(e);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">			//删除按钮</span><br><span class="line">			$(document).on(<span class="string">"click"</span>,<span class="string">"#delete"</span>,<span class="function"><span class="title">function</span></span> () &#123;</span><br><span class="line">       			<span class="built_in">let</span> index = Number($(this).attr(<span class="string">'myIndex'</span>))+1;</span><br><span class="line">       			<span class="built_in">let</span> id = $(`tr:eq(<span class="variable">$&#123;index&#125;</span>)`)[0].children[0].innerText</span><br><span class="line">       			deleteData(id);</span><br><span class="line">    		&#125;);</span><br><span class="line">    		//增加按钮</span><br><span class="line">    		$(document).on(<span class="string">'click'</span>,<span class="string">'#addBtn'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    			window.location.href = <span class="string">'addArticle.html'</span>;</span><br><span class="line">    		&#125;);</span><br><span class="line">    		//查看按钮</span><br><span class="line">    		$(document).on(<span class="string">'click'</span>,<span class="string">'#checkBtn'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    			<span class="built_in">let</span> index = Number($(this).attr(<span class="string">'myIndex'</span>))+1;</span><br><span class="line">       			<span class="built_in">let</span> id = $(`tr:eq(<span class="variable">$&#123;index&#125;</span>)`)[0].children[0].innerText</span><br><span class="line">    			window.location.href = `checkArticle.html?id=<span class="variable">$&#123;id&#125;</span>`;</span><br><span class="line">    		&#125;);</span><br><span class="line">    		//修改按钮</span><br><span class="line">    		$(document).on(<span class="string">'click'</span>,<span class="string">'#fixBtn'</span>,<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">    			<span class="built_in">let</span> index = Number($(this).attr(<span class="string">'myIndex'</span>))+1;</span><br><span class="line">       			<span class="built_in">let</span> id = $(`tr:eq(<span class="variable">$&#123;index&#125;</span>)`)[0].children[0].innerText</span><br><span class="line">    			window.location.href = `fixArticle.html?id=<span class="variable">$&#123;id&#125;</span>`;</span><br><span class="line">    		&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			<span class="keyword">function</span> deleteData(itemId)&#123;</span><br><span class="line">				$.ajax(&#123;</span><br><span class="line">					<span class="built_in">type</span>:<span class="string">'post'</span>,</span><br><span class="line">					url:<span class="string">'delete.php'</span>,</span><br><span class="line">					data:&#123;</span><br><span class="line">						action:<span class="string">'deleteItem'</span>,</span><br><span class="line">						id:itemId</span><br><span class="line">					&#125;,</span><br><span class="line">					dataType:<span class="string">'JSON'</span>,</span><br><span class="line">					success:(data)=&gt;&#123;</span><br><span class="line">						getList();</span><br><span class="line">						alert(<span class="string">'删除成功'</span>);</span><br><span class="line">					&#125;,</span><br><span class="line">					error:(e)=&gt;&#123;</span><br><span class="line">						alert(<span class="string">'删除失败'</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">	</span><br><span class="line">		&#125;)</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>修改页面</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;文章修改&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;script src=<span class="string">"js/jquery-1.12.4.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">	&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">		.box&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">			&lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span> colspan=<span class="string">'2'</span> height=<span class="string">'50'</span>&gt;修改文章&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			</span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;标题：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"title"</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;作者：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"authod"</span> &gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;简介：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;textarea cols=<span class="string">"100"</span> rows=<span class="string">"10"</span> name=<span class="string">"description"</span> id=<span class="string">"description"</span> &gt;&lt;/textarea&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;内容：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;textarea cols=<span class="string">"100"</span> rows=<span class="string">"10"</span> name=<span class="string">"content"</span> id=<span class="string">"content"</span> &gt;&lt;/textarea&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;&lt;input id=<span class="string">"btn"</span> <span class="built_in">type</span>=<span class="string">"submit"</span> name=<span class="string">"submit"</span> value=<span class="string">"修改"</span> align=<span class="string">"center"</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			&lt;/table&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			<span class="keyword">function</span> getUrlParam(name) &#123;</span><br><span class="line">		        // 用该属性获取页面 URL 地址从问号 (?) 开始的 URL（查询部分）</span><br><span class="line">		        var url = window.location.search;</span><br><span class="line">		        // 正则筛选地址栏</span><br><span class="line">		        var reg = new RegExp(<span class="string">"(^|&amp;)"</span>+ name +<span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">		        // 匹配目标参数</span><br><span class="line">		        var result = url.substr(1).match(reg);</span><br><span class="line">		        //返回参数值</span><br><span class="line">		        <span class="built_in">return</span> result ? decodeURIComponent(result[2]) : null;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="built_in">let</span> articleId = getUrlParam(<span class="string">"id"</span>);</span><br><span class="line">    		</span><br><span class="line"></span><br><span class="line">			$.ajax(&#123;</span><br><span class="line">				<span class="built_in">type</span>:<span class="string">'post'</span>,</span><br><span class="line">				url:<span class="string">'check.php'</span>,</span><br><span class="line">				data:&#123;</span><br><span class="line">					action:<span class="string">'check'</span>,</span><br><span class="line">					id:articleId</span><br><span class="line">				&#125;,</span><br><span class="line">				dataType:<span class="string">'JSON'</span>,</span><br><span class="line">				success:(data)=&gt;&#123;</span><br><span class="line">					<span class="built_in">let</span> articleData = data.data[0];</span><br><span class="line">					$(<span class="string">"input[ name = 'title']"</span>).val(articleData.title);</span><br><span class="line">					$(<span class="string">"input[ name = 'authod']"</span>).val(articleData.auther);</span><br><span class="line">					$(<span class="string">" textarea[ name='description' ] "</span>).val(articleData.description);</span><br><span class="line">					$(<span class="string">" textarea[ name='content' ] "</span>).val(articleData.content);</span><br><span class="line">				&#125;,</span><br><span class="line">				error:(e)=&gt;&#123;</span><br><span class="line">					console.log(e);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			$(document).on(<span class="string">'click'</span>,<span class="string">'#btn'</span>,()=&gt;&#123;</span><br><span class="line">				<span class="built_in">let</span> title = $(<span class="string">"input[ name = 'title']"</span>).val();</span><br><span class="line">				<span class="built_in">let</span> authod = $(<span class="string">"input[ name = 'authod']"</span>).val();</span><br><span class="line">				<span class="built_in">let</span> description = $(<span class="string">"textarea[ name = 'description']"</span>).val();</span><br><span class="line">				<span class="built_in">let</span> content = $(<span class="string">"textarea[ name = 'content']"</span>).val();</span><br><span class="line">				fixData(articleId,title,authod,description,content);</span><br><span class="line">			&#125;)</span><br><span class="line"></span><br><span class="line">			<span class="keyword">function</span> fixData(id,title,authod,description,content)&#123;</span><br><span class="line">				$.ajax(&#123;</span><br><span class="line">					<span class="built_in">type</span>:<span class="string">'post'</span>,</span><br><span class="line">					url:<span class="string">'fix.php'</span>,</span><br><span class="line">					data:&#123;</span><br><span class="line">						action:<span class="string">'fixInfo'</span>,</span><br><span class="line">						id:id,</span><br><span class="line">						title:title,</span><br><span class="line">						authod:authod,</span><br><span class="line">						description:description,</span><br><span class="line">						content:content,</span><br><span class="line">					&#125;,</span><br><span class="line">					dataType:<span class="string">'JSON'</span>,</span><br><span class="line">					success:(data)=&gt;&#123;</span><br><span class="line">						alert(<span class="string">'更新成功'</span>);</span><br><span class="line">						$(window).attr(<span class="string">'location'</span>,<span class="string">'articleList.html'</span>);</span><br><span class="line">					&#125;,</span><br><span class="line">					error:(e)=&gt;&#123;</span><br><span class="line">						alert(<span class="string">'失败'</span>);</span><br><span class="line">					&#125;</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;);</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<ol start="3">
+<li>查看文章页面</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;文章查看&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;script src=<span class="string">"js/jquery-1.12.4.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">	&lt;style <span class="built_in">type</span>=<span class="string">"text/css"</span>&gt;</span><br><span class="line">		.box&#123;</span><br><span class="line">			text-align: center;</span><br><span class="line">		&#125;</span><br><span class="line">	&lt;/style&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">		&lt;div class=<span class="string">'box'</span>&gt;&lt;/div&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			<span class="keyword">function</span> getUrlParam(name) &#123;</span><br><span class="line">		        // 用该属性获取页面 URL 地址从问号 (?) 开始的 URL（查询部分）</span><br><span class="line">		        var url = window.location.search;</span><br><span class="line">		        // 正则筛选地址栏</span><br><span class="line">		        var reg = new RegExp(<span class="string">"(^|&amp;)"</span>+ name +<span class="string">"=([^&amp;]*)(&amp;|$)"</span>);</span><br><span class="line">		        // 匹配目标参数</span><br><span class="line">		        var result = url.substr(1).match(reg);</span><br><span class="line">		        //返回参数值</span><br><span class="line">		        <span class="built_in">return</span> result ? decodeURIComponent(result[2]) : null;</span><br><span class="line">    		&#125;</span><br><span class="line">    		<span class="built_in">let</span> articleId = getUrlParam(<span class="string">"id"</span>);</span><br><span class="line">    		</span><br><span class="line"></span><br><span class="line">			$.ajax(&#123;</span><br><span class="line">				<span class="built_in">type</span>:<span class="string">'post'</span>,</span><br><span class="line">				url:<span class="string">'check.php'</span>,</span><br><span class="line">				data:&#123;</span><br><span class="line">					action:<span class="string">'check'</span>,</span><br><span class="line">					id:articleId</span><br><span class="line">				&#125;,</span><br><span class="line">				dataType:<span class="string">'JSON'</span>,</span><br><span class="line">				success:(data)=&gt;&#123;</span><br><span class="line">					<span class="built_in">let</span> articleData = data.data[0];</span><br><span class="line">					<span class="built_in">let</span> info = `&lt;h2&gt;标题：<span class="variable">$&#123;articleData.title&#125;</span>&lt;/h1&gt;&lt;h2&gt;作者：<span class="variable">$&#123;articleData.auther&#125;</span> &lt;/h2&gt;&lt;h3&gt;时间：<span class="variable">$&#123;articleData.dateline&#125;</span>	&lt;/h3&gt;&lt;h4&gt;描述：<span class="variable">$&#123;articleData.description&#125;</span>&lt;/h4&gt;&lt;p&gt;内容：<span class="variable">$&#123;articleData.content&#125;</span>&lt;/p&gt;`</span><br><span class="line">					$(<span class="string">'.box'</span>).append(info);</span><br><span class="line">				&#125;,</span><br><span class="line">				error:(e)=&gt;&#123;</span><br><span class="line">					console.log(e);</span><br><span class="line">				&#125;</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;)</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">	</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<ol start="4">
+<li>增加文章页面</li>
+</ol>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">	&lt;head&gt;</span><br><span class="line">		&lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">		&lt;title&gt;文章发布的界面&lt;/title&gt;</span><br><span class="line">	&lt;/head&gt;</span><br><span class="line">	&lt;script src=<span class="string">"js/jquery-1.12.4.js"</span>&gt;&lt;/script&gt;</span><br><span class="line">	&lt;body&gt;</span><br><span class="line">			&lt;table border=<span class="string">"1"</span>&gt;</span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span> colspan=<span class="string">'2'</span> height=<span class="string">'50'</span>&gt;发布文章&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			</span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;标题：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"title"</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;作者：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;input <span class="built_in">type</span>=<span class="string">"text"</span> name=<span class="string">"authod"</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;简介：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;textarea cols=<span class="string">"100"</span> rows=<span class="string">"10"</span> name=<span class="string">"description"</span> id=<span class="string">"description"</span>&gt;&lt;/textarea&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td align=<span class="string">"center"</span>&gt;内容：&lt;/td&gt;</span><br><span class="line">				&lt;td &gt;&lt;textarea cols=<span class="string">"100"</span> rows=<span class="string">"10"</span> name=<span class="string">"content"</span> id=<span class="string">"content"</span>&gt;&lt;/textarea&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line"></span><br><span class="line">			&lt;tr&gt;</span><br><span class="line">				&lt;td&gt;&lt;input id=<span class="string">"btn"</span> <span class="built_in">type</span>=<span class="string">"submit"</span> name=<span class="string">"submit"</span> value=<span class="string">"提交文章"</span> align=<span class="string">"center"</span>&gt;&lt;/td&gt;</span><br><span class="line">			&lt;/tr&gt;</span><br><span class="line">			&lt;/table&gt;</span><br><span class="line">	&lt;/body&gt;</span><br><span class="line">	&lt;script <span class="built_in">type</span>=<span class="string">"text/javascript"</span>&gt;</span><br><span class="line">		$(<span class="function"><span class="title">function</span></span>()&#123;</span><br><span class="line">			$(<span class="string">'#btn'</span>).click(()=&gt;&#123;</span><br><span class="line">				// alert($(<span class="string">" input[ name='title' ] "</span>).val());</span><br><span class="line">				<span class="built_in">let</span> title = $(<span class="string">" input[ name='title' ] "</span>).val();</span><br><span class="line">				<span class="built_in">let</span> authod = $(<span class="string">" input[ name='authod' ] "</span>).val();</span><br><span class="line">				<span class="built_in">let</span> description = $(<span class="string">" textarea[ name='description' ] "</span>).val();</span><br><span class="line">				<span class="built_in">let</span> content = $(<span class="string">" textarea[ name='content' ] "</span>).val();</span><br><span class="line">				$.ajax(&#123;</span><br><span class="line">					<span class="built_in">type</span>:<span class="string">'post'</span>,</span><br><span class="line">					url:<span class="string">'addArticle.php'</span>,</span><br><span class="line">					data:&#123;</span><br><span class="line">						action:<span class="string">'add'</span>,</span><br><span class="line">						title:title,</span><br><span class="line">						authod:authod,</span><br><span class="line">						description:description,</span><br><span class="line">						content:content,</span><br><span class="line">					&#125;,</span><br><span class="line">					dataType:<span class="string">'JSON'</span>,</span><br><span class="line">					success:(data)=&gt;&#123;</span><br><span class="line">						alert(<span class="string">'添加文章成功'</span>);</span><br><span class="line">						$(window).attr(<span class="string">'location'</span>,<span class="string">'articleList.html'</span>);</span><br><span class="line">					&#125;,</span><br><span class="line">					error:(e)=&gt;&#123;</span><br><span class="line">						console.log(e);</span><br><span class="line">					&#125;,</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;)</span><br><span class="line">		&#125;)</span><br><span class="line">	&lt;/script&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="5、项目演示"><a href="#5、项目演示" class="headerlink" title="5、项目演示"></a>5、项目演示</h2><p><img src="https://img-blog.csdnimg.cn/20191111204753333.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191111204824763.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191111204900454.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br><img src="https://img-blog.csdnimg.cn/20191111204926690.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191111204950694.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述">)<img src="https://img-blog.csdnimg.cn/20191111205002946.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MTYxNDczMg==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="6、项目已经上传github，可以直接下载下来"><a href="#6、项目已经上传github，可以直接下载下来" class="headerlink" title="6、项目已经上传github，可以直接下载下来"></a>6、项目已经上传github，可以直接下载下来</h2><p>GitHub：<a href="https://github.com/xiaoyaoFreedom/Article" target="_blank" rel="noopener">https://github.com/xiaoyaoFreedom/Article</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E5%90%8E%E7%AB%AF/" rel="tag"># 后端</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/11/12/markdown%E8%AF%AD%E6%B3%95%E8%AE%B0%E5%BD%95/" rel="next" title="markdown语法记录">
+                <i class="fa fa-chevron-left"></i> markdown语法记录
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/11/15/vmware%E5%AE%89%E8%A3%85ubuntu%E8%AF%A6%E7%BB%86%E6%95%99%E7%A8%8B/" rel="prev" title="vmware安装ubuntu详细教程">
+                vmware安装ubuntu详细教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+            <a href="/about/">
+                <img class="site-author-image" itemprop="image"
+                  src="/uploads/picture.jpg"
+                  alt="蓝图" />
+              
+                <p class="site-author-name" itemprop="name">蓝图</p>
+             </a>
+              <p class="site-description motion-element" itemprop="description">我有觉悟 我会战斗</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">25</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">4</span>
+                  <span class="site-state-item-name">分类</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">标签</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/xiaoyaoFreedom" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="mailto:690671244@qq.com" target="_blank" title="E-mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1、创建本地服务器存放项目"><span class="nav-number">1.</span> <span class="nav-text">1、创建本地服务器存放项目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2、创建项目的数据库"><span class="nav-number">2.</span> <span class="nav-text">2、创建项目的数据库</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3、连接数据库创建增删查改4个接口"><span class="nav-number">3.</span> <span class="nav-text">3、连接数据库创建增删查改4个接口</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4、创建前端页面，分别是列表页面，增加文章页面，查看文章页面，修改文章页面"><span class="nav-number">4.</span> <span class="nav-text">4、创建前端页面，分别是列表页面，增加文章页面，查看文章页面，修改文章页面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5、项目演示"><span class="nav-number">5.</span> <span class="nav-text">5、项目演示</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6、项目已经上传github，可以直接下载下来"><span class="nav-number">6.</span> <span class="nav-text">6、项目已经上传github，可以直接下载下来</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+<div class="copyright">&copy; <span itemprop="copyrightYear">2022</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">蓝图</span>
+
+  
+</div>
+
+
+<!--
+<div class="powered-by">
+<i class="fa fa-user-md"></i><span id="busuanzi_container_site_uv">
+  本站访客数:<span id="busuanzi_value_site_uv"></span>
+</span>
+</div>
+
+-->
+
+
+<!--
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动
+</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+-->
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共10.9k字</span>
+</div>
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
